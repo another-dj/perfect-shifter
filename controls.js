@@ -11,19 +11,17 @@ class Controls {
                 //SPACEBAR
                 case 32:
                     this.player.shift()
-                    //this.game.isAccelerating = true;
-                    //this.game.player= "player shifts, and accelerates"
+                    
                     console.log(game.player.progress);
                     break;
             }
         });
 
-        window.addEventListener("keyup", event => {
+        window.addEventListener("keydown", event => {
             switch (event.keyCode) {
-                //SPACEBAR
-                case 32:
-                    //this.game.isAccelerating = false;
-                    //this.game.player="player decelerates"
+                //ENTER
+                case 13:
+                   //this.player.shift()
                     break;
             }
         });

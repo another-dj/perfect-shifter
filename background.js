@@ -12,7 +12,7 @@ class Background {
 
         context.fillStyle ="grey";
         context.fillRect(0, 367, 800, 183);
-        for (let i = 8000; i>0; i-=120) {
+        for (let i = 7000; i>0; i-=120) {
             context.lineWidth = 10;
             context.strokeStyle = "white";
             context.beginPath();
@@ -21,7 +21,7 @@ class Background {
             context.stroke();
             context.closePath();
             context.fillStyle="green"
-            context.fillRect(this.x+1600, 490, 200, 50);
+            context.fillRect(this.x+7000, 367, 25, 183);
           }
           
     }
@@ -30,12 +30,11 @@ class Background {
         const context = this.context;
         context.clearRect(0, 457, this.width, 183);
         this.drawRoad();
-        if (this.x === -7950){
+        if (this.x === -6950){
             //this.x = 0;
             this.velocityX = 0;
         }else{ 
             this.x += this.velocityX;
         }
-        
-    }
+        }
 }
