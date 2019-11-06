@@ -29,17 +29,19 @@ class Player2 {
   shift() {
     if(this.game.rpm.revolutions2>4000)
     if (this.progress < 100 && (this.game.rpm.revolutions2 < 8500 && this.game.rpm.revolutions2 > 7800)) {
-      this.progress += 20;
       
+      this.progress += 20;
       this.game.rpm.revolutions2 -= 3000;
-      this.x +=100;
+      
+      this.x += 100
       console.log("PROGRESS",this.progress);
       console.log("PERFECT SHIFT",this.game.rpm.revolutions2)
     } else if (this.progress < 100) {
-      this.progress += 13;
-      this.game.rpm.revolutions2 -= 4000
-      this.x +=10;
       
+      this.progress += 13;
+      this.game.rpm.revolutions2 -= 4000;
+
+      this.x +=10;
       console.log("PROGRESS",this.progress);
       console.log("NORMAL SHIFT",this.game.rpm.revolutions2)
     }
@@ -47,12 +49,14 @@ class Player2 {
 }
 
 winner(){
-  if (this.player.progress<this.player2.progress){
+  //if (this.progress<this.player2.progress){
     this.game.background.context.clearRect(0, 0, this.width, this.height);
     this.game.background.context.font = "100px lucida console"
     this.game.background.context.fillStyle = "blue"
     this.game.background.context.fillText('Player 2 WINS', 135, 180)
 
+//}
 }
-}
+
+
 }

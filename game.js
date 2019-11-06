@@ -30,7 +30,7 @@ class Game {
   }
 
   startGame() {
-    debugger;
+    //debugger;
     this.gamelost = false;
     this.started = true;
     //this.rpmLoop();
@@ -60,18 +60,14 @@ class Game {
             this.player2.winner();
           }
           break;
-
         case "grandma":
           this.botplayer.results();
           break;
-
         case "brian":
           this.botplayer.results();
           break;
-
         case "toretto":
           this.botplayer.results();
-
           break;
       }
     } else {
@@ -138,6 +134,7 @@ class Game {
       }
     }
     this.drawEverything();
+    this.player.acceleration();
   }
 
   clearEverything() {

@@ -12,9 +12,10 @@ class Controls {
                 switch (event.keyCode) {
                     //SPACEBAR
                     case 32:
-                        this.player.shift()
+                        this.game.player.shift()
                         console.log(game.player.progress);
                         break;
+                        //ENTER
                     case 13:
                         this.game.player2.shift()
                         console.log(game.player2.progress)
