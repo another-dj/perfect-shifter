@@ -11,7 +11,7 @@ class Botplayer {
       //this.img.src = "";
     }
     drawBot(){
-      this.context.fillStyle = "black";
+      this.context.fillStyle = "purple";
       this.context.fillRect(this.x, 380, 200, 50)
     }
 
@@ -31,22 +31,36 @@ class Botplayer {
 
     shift() {
       
-       
       if ((this.progress < 100) && (this.randNumber25(this.game.minRpm, this.game.maxRpm) >=7800 && this.randNumber25(this.game.minRpm, this.game.maxRpm) <=8500)) {
-        this.progress += 19;
-        this.game.rpm.botRevolutions -= 3200;
+        this.progress += 20;
+        this.game.rpm.botRevolutions -= 3000;
         this.x +=100;
-        console.log("FIRST CONDITION",this.progress);
-        console.log("FIRST CONDITION",this.randNumber25(this.game.minRpm, this.game.maxRpm))
+        console.log("PROGRESS",this.progress);
+        console.log("PEFECT SHIFT",this.randNumber25(this.game.minRpm, this.game.maxRpm))
       } else if ((this.progress < 100) && (this.randNumber25(this.game.minRpm, this.game.maxRpm) <9001)) {
-        this.progress += 12;
-        this.game.rpm.botRevolutions -= 3800
-        this.x +=9;
-        console.log("SECOND  CONDITION",this.progress);
-        console.log("SECOND  CONDITION",this.randNumber25(this.game.minRpm, this.game.maxRpm))
+        this.progress += 13;
+        this.game.rpm.botRevolutions -= 4000
+        this.x +=10;
+        console.log("PROGRESS",this.progress);
+        console.log("NORMAL SHIFT",this.randNumber25(this.game.minRpm, this.game.maxRpm))
       }
       }
+
+      results(){
+        if (this.game.player.progress > this.progress) {
+          this.game.background.context.clearRect(0, 0, this.width, this.height);
+          this.game.background.context.font = "100px lucida console"
+          this.game.background.context.fillStyle = "green"
+          this.game.background.context.fillText('YOU WIN', 150, 180);
+        } else {
+          this.game.background.context.clearRect(0, 0, this.width, this.height);
+          this.game.background.context.font = "100px lucida console"
+          this.game.background.context.fillStyle = "red"
+          this.game.background.context.fillText('YOU LOSE', 135, 180);
+        }
+      }
+
     }
 
-    //updateBot()
+    
     

@@ -26,19 +26,35 @@ class Player {
   }*/
 
   shift() {
+    if (this.game.rpm.revolutions > 4000)
+      if (this.progress < 100 && (this.game.rpm.revolutions < 8500 && this.game.rpm.revolutions > 7800)) {
+        this.progress += 20;
 
-    if (this.progress < 100 && (this.game.rpm.revolutions < 8500 && this.game.rpm.revolutions > 7800)) {
-      this.progress += 19;
-      this.game.rpm.revolutions -= 3200;
-      this.x +=100;
-      console.log("FIRST CONDITION",this.progress);
-      console.log("FIRST CONDITION",this.game.rpm.revolutions)
-    } else if (this.progress < 100) {
-      this.progress += 12;
-      this.game.rpm.revolutions -= 3800
-      this.x +=30;
-      console.log("SECOND  CONDITION",this.progress);
-      console.log("SECOND  CONDITION",this.game.rpm.revolutions)
+        this.game.rpm.revolutions -= 3000;
+        this.x += 100;
+        console.log("PROGRESS", this.progress);
+        console.log("PERFECT SHIFT", this.game.rpm.revolutions)
+      } else if (this.progress < 100) {
+      this.progress += 13;
+      this.game.rpm.revolutions -= 4000
+      this.x += 10;
+      if(this.game.rpm.revolutions === 9000){
+        this.game.rpm.revolutions = 8500;
+      }
+      console.log("PROGRESS", this.progress);
+      console.log("NORMAL SHIFT", this.game.rpm.revolutions)
     }
+  }
+
+  winner() {
+    // if (this.player.progress>this.player2.progress){
+    this.context.clearRect(0, 0, this.width, this.height);
+    this.context.font = "100px lucida console"
+    this.context.fillStyle = "green"
+    this.context.fillText('Player 1 WINS', 135, 180)
+    this.game.started = false;
+    //this.game.gamelost = false;
+    // }else if (this.player2.progress>this.player.progress){
+    //  this.background.context.fillText('Player 2 WINS', 135, 180)
   }
 }
