@@ -11,9 +11,11 @@ class Rpm {
     this.context.save();
     this.context.strokeStyle = "brown";
     this.context.strokeRect(10, 10, 150, 63);
+    this.context.strokeRect(160, 10, 63, 63); // gearRect
     this.context.font = "40px arial";
     this.context.fillStyle = "orange";
     this.context.fillText(this.revolutions, 37, 60);
+    this.context.fillText(game.player.gear, 180, 60); //gearText
     this.context.restore();
   }
 
@@ -21,9 +23,11 @@ class Rpm {
     this.context.save();
     this.context.strokeStyle = "brown";
     this.context.strokeRect(635, 10, 150, 63);
+    this.context.strokeRect(575, 10, 63, 63); // gearRect
     this.context.font = "40px arial";
     this.context.fillStyle = "orange";
     this.context.fillText(this.revolutions2, 635 + 37, 60);
+    this.context.fillText(game.player2.gear, 592, 60); // gearText
     this.context.restore();
   }
 
@@ -43,6 +47,7 @@ class Rpm {
     }
     this.context.save();
     this.context.clearRect(10, 10, 150, 63);
+    this.context.clearRect(160, 10, 63, 63); // clear gears
     this.drawRpm();
     this.revolutions += this.ratio;
     //console.log(this.revolutions);
@@ -54,7 +59,8 @@ class Rpm {
         this.revolutions2 = 8400;
     }
       this.context.save();
-      this.context.clearRect(635, 10, 150, 63);
+      this.context.clearRect(635, 10, 150, 63); 
+      this.context.clearRect(575, 10, 63, 63); // clearGears
       this.drawRpm2();
       this.revolutions2 += this.ratio;
       //console.log(this.revolutions);

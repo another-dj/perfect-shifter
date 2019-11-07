@@ -17,7 +17,7 @@ class Background {
       context.fillRect(0, 367, 800, 183);
       for (let i = 7000; i > 0; i -= 120) {
       context.lineWidth = 10;
-      context.strokeStyle = "white";
+      context.strokeStyle = "rgba(255,255,255,0.5)";
       context.beginPath();
       context.moveTo(i + this.x, 457);
       context.lineTo(i - 50 + this.x, 457);

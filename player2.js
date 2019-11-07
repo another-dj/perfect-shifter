@@ -18,6 +18,7 @@ class Player2 {
   drawPlayer2() {
     
     this.context.drawImage(this.img, this.x, this.y,210,75);
+    
   }
 
   /*drawPlayer2(){
@@ -34,18 +35,19 @@ class Player2 {
         this.progress += 20;
         this.game.rpm.revolutions2 -= 3000;
         this.gear++;
-        this.x += 50;
+        this.x += 20;
         this.velocityX = 3;
+
         console.log("PROGRESS", this.progress);
         console.log("PERFECT SHIFT", this.game.rpm.revolutions2);
+
       } else if (this.progress < 100) {
         this.progress += 15;
-        this.game.rpm.revolutions2 -= 4000;
-        // ACCELERATION LOGIC
-        this.velocityX = 1;
-        // --------------
+        this.game.rpm.revolutions2 -= 4000
+        this.velocityX = 2;
         this.gear++;
-        this.x += 2;
+        this.x += 1;
+
         console.log("PROGRESS", this.progress);
         console.log("NORMAL SHIFT", this.game.rpm.revolutions2);
       }
@@ -55,51 +57,59 @@ class Player2 {
   winner() {
     //if (this.progress<this.player2.progress){
     this.game.background.context.clearRect(0, 0, this.width, this.height);
-    this.game.background.context.font = "50px lucida console";
+    this.game.background.context.font = "60px lucida console";
     this.game.background.context.fillStyle = "blue";
     this.game.background.context.fillText("Player 2 WINS", 135, 180);
 
     //}
   }
   acceleration() {
-    //console.log("x value:", this.x);
-    // console.log("this.x", this.x);
-    // console.log("this.x", this.velocityX);
-    if (this.game.rpm.revolutions2 < 7800 && this.game.rpm.revolutions2 > 8500) {
-      if (this.x === 95) {
+   
+    if (this.game.rpm.revolutions2<7800 || this.game.rpm.revolutions2>8500){
+      //perfect shift
+      if (this.x >= 95 && this.x<=97) {
         this.velocityX = 0;
       }
-      if (this.x === 145) {
+      if (this.x >= 145 && this.x<=147) {
         this.velocityX = 0;
       }
-      if (this.x === 195) {
+      if (this.x >= 195 && this.x<=197) {
         this.velocityX = 0;
       }
-      if (this.x === 245) {
+      if (this.x >= 245 && this.x<=247) {
         this.velocityX = 0;
       }
-      if (this.x === 295) {
-        this.velocityX = 0;
+      if (this.x >= 295 && this.x<=297) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 345 && this.x<=347) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 395 && this.x<=397) {
+          this.velocityX = 0;
+        }
+        this.x += this.velocityX;
+
+      }else if(this.game.rpm.revolutions2>=7800 && this.game.rpm.revolutions2<=8500){
+        //perfect shift
+        if (this.x >= 145 && this.x<=147) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 245 && this.x<=247) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 345 && this.x<=347) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 445 && this.x<=447) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 545 && this.x<=547) {
+            this.velocityX = 0;
+          }
+          this.x += this.velocityX;
       }
-      this.x += this.velocityX;
-    }
-    /* else if (this.game.rpm.revolutions2 > 7800 && this.game.rpm.revolutions2 < 8500){
-      if (this.x >=95 && this.x<145){
-        this.velocityX = 0;
-      }
-      if (this.x >=145 && this.x<195){
-        this.velocityX = 0;
-      }
-      if (this.x >=195 && this.x<245){
-        this.velocityX = 0;
-      }
-      if (this.x >=245 && this.x<295){
-        this.velocityX = 0;
-      }
-      if (this.x >=295 && this.x<345){
-        this.velocityX = 0;
-      }
-      this.x += this.velocityX;
-    } */
+    //console.log(this.x)
   }
-}
+  }
+

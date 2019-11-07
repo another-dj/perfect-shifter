@@ -16,8 +16,8 @@ class Game {
     this.timer = 0;
     this.counter = 0;
     //this.lose = false;
-    this.maxRpm = 9000;
-    this.minRpm = 6700;
+    this.maxRpm = 7000;
+    this.minRpm = 4000;
     this.level = "grandma";
     this.gamelost = false;
     this.vsmode = false;
@@ -36,12 +36,12 @@ class Game {
     //this.rpmLoop();
     if (this.level === "player2") {
       this.player2 = new Player2(this);
-    } else if (
-      this.level === "grandma" ||
-      this.level === "brian" ||
-      this.level === "toretto"
-    ) {
-      this.botplayer = new Botplayer(this);
+    } else if (this.level === "grandma") {
+      this.botplayer = new Botplayer(this, 7000, 4000);
+    } else if (this.level === "brian") {
+      this.botplayer = new Botplayer(this, 9000, 6000);
+    } else if (this.level === "toretto") {
+      this.botplayer = new Botplayer(this, 8500, 7800);
     }
     //console.log(this.player2, this.botplayer)
     this.animation();
@@ -75,7 +75,7 @@ class Game {
     } else {
       this.background.drawRoad();
       this.background.update();
-      
+
       this.player.drawPlayer();
       this.rpm.updateRpm();
       if (
@@ -86,10 +86,8 @@ class Game {
         this.botplayer.drawBot();
         this.rpm.updateBotRpm();
         //this.botplayer.acceleration();
-        if (
-          this.rpm.botRevolutions > this.minRpm &&
-          this.rpm.botRevolutions < this.maxRpm
-        ) {
+        if (this.rpm.botRevolutions === this.botplayer.randomNumber25) {
+          console.log("random25", this.botplayer.randomNumber25);
           console.log("RPM REVOLUTIONS", this.rpm.botRevolutions);
           this.botplayer.shift();
         }
@@ -172,8 +170,7 @@ class Game {
       case "toretto":
         console.log("this.level", this.level);
         this.startGame();
-        this.minRpm = 7775;
-        this.maxRpm = 8525;
+
         break;
       case "player2":
         this.vsmode = true;

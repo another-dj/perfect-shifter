@@ -5,6 +5,7 @@ const startBtn = document.getElementById("startBtn");
 const medBtn = document.getElementById("medium");
 const hardBtn = document.getElementById("hard");
 const vstBtn = document.getElementById("vsBtn");
+game
 
 // play with bot
 window.addEventListener("load", () => {

@@ -27,7 +27,7 @@ class Player {
   }*/
 
   shift() {
-    if (this.game.rpm.revolutions > 4000 && this.gear<9)
+    if (this.game.rpm.revolutions > 4000 && this.gear<6)
       if (
         this.progress < 100 &&
         (this.game.rpm.revolutions <=8500 && this.game.rpm.revolutions >=7800)
@@ -35,18 +35,19 @@ class Player {
         this.progress += 20;
         this.gear++
         this.game.rpm.revolutions -= 3000;
-        
         this.x+=20;
         this.velocityX = 3;
+
         console.log("PROGRESS", this.progress);
         console.log("PERFECT SHIFT", this.game.rpm.revolutions);
+        
       } else if (this.progress < 100) {
-        this.progress += 10;
+        this.progress += 15;
         this.game.rpm.revolutions -= 4000;
         this.x+=10;
-       
         this.velocityX = 2;
         this.gear++
+
         console.log("PROGRESS", this.progress);
         console.log("NORMAL SHIFT", this.game.rpm.revolutions);
         
