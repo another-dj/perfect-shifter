@@ -8,16 +8,17 @@ class Player {
     //this.xx = 45;
     this.progress = 0;
     //this.progress2 = 0;
-    this.y = 490;
+    this.y = 480;
     //this.yy = 380
     this.velocityX = 0;
     this.img = new Image();
-    //this.img.src = "";
+    this.img.src = "/PNGPIX-COM-Red-Lamborghini-Huracan-Sports-Car-PNG-Image.png";
+    this.gear = 1;
   }
 
   drawPlayer() {
-    this.context.fillStyle = "red";
-    this.context.fillRect(this.x, this.y, 200, 50);
+    //this.context.fillStyle = "red";
+    this.context.drawImage(this.img, this.x, this.y,210,65);
   }
 
   /*drawPlayer2(){
@@ -26,36 +27,36 @@ class Player {
   }*/
 
   shift() {
-    if (this.game.rpm.revolutions > 4000)
+    if (this.game.rpm.revolutions > 4000 && this.gear<9)
       if (
         this.progress < 100 &&
-        (this.game.rpm.revolutions < 8500 && this.game.rpm.revolutions > 7800)
+        (this.game.rpm.revolutions <=8500 && this.game.rpm.revolutions >=7800)
       ) {
         this.progress += 20;
-
+        this.gear++
         this.game.rpm.revolutions -= 3000;
-        this.x += 100;
+        
+        this.x+=20;
+        this.velocityX = 3;
         console.log("PROGRESS", this.progress);
         console.log("PERFECT SHIFT", this.game.rpm.revolutions);
       } else if (this.progress < 100) {
-        this.progress += 13;
+        this.progress += 10;
         this.game.rpm.revolutions -= 4000;
-        //this.x += 10;
-        this.x += 20;
-        this.velocityX = 4;
-
-        if (this.game.rpm.revolutions >= 8999) {
-          this.game.rpm.revolutions = 8500;
-        }
+        this.x+=10;
+       
+        this.velocityX = 2;
+        this.gear++
         console.log("PROGRESS", this.progress);
         console.log("NORMAL SHIFT", this.game.rpm.revolutions);
+        
       }
   }
 
   winner() {
     // if (this.player.progress>this.player2.progress){
     this.context.clearRect(0, 0, this.width, this.height);
-    this.context.font = "100px lucida console";
+    this.context.font = "60px lucida console";
     this.context.fillStyle = "green";
     this.context.fillText("Player 1 WINS", 135, 180);
     this.game.started = false;
@@ -64,18 +65,52 @@ class Player {
     //  this.background.context.fillText('Player 2 WINS', 135, 180)
   }
   acceleration() {
+    //console.log("x value:", this.x);
     // console.log("this.x", this.x);
-    // console.log("this.x", this.velocityX);
-
-    if (this.x >= 200 && this.x <= 215) {
-      this.velocityX = 0;
-    }
-    if (this.x >= 300 && this.x <= 315) {
-      this.velocityX = 0;
-    }
-    if (this.x >= 400 && this.x <= 415) {
-      this.velocityX = 0;
-    }
-    this.x += this.velocityX;
+    //console.log("this.xvelocity", this.velocityX);
+    if (this.game.rpm.revolutions<7800 || this.game.rpm.revolutions>8500){
+      //perfect shift
+      if (this.x >= 95 && this.x<=97) {
+        this.velocityX = 0;
+      }
+      if (this.x >= 145 && this.x<=147) {
+        this.velocityX = 0;
+      }
+      if (this.x >= 195 && this.x<=197) {
+        this.velocityX = 0;
+      }
+      if (this.x >= 245 && this.x<=247) {
+        this.velocityX = 0;
+      }
+      if (this.x >= 295 && this.x<=297) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 345 && this.x<=347) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 395 && this.x<=397) {
+          this.velocityX = 0;
+        }
+        this.x += this.velocityX;
+      }else if(this.game.rpm.revolutions>=7800 && this.game.rpm.revolutions<=8500){
+        //perfect shift
+        if (this.x >= 145 && this.x<=147) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 245 && this.x<=247) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 345 && this.x<=347) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 445 && this.x<=447) {
+          this.velocityX = 0;
+        }
+        if (this.x >= 545 && this.x<=547) {
+            this.velocityX = 0;
+          }
+          this.x += this.velocityX;
+      }
+    //console.log(this.x)
   }
 }

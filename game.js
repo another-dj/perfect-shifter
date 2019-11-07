@@ -58,6 +58,8 @@ class Game {
             this.player.winner();
           } else if (this.player.progress < this.player2.progress) {
             this.player2.winner();
+          } else if (this.player.progress === this.player2.progress) {
+            //its a draw();
           }
           break;
         case "grandma":
@@ -73,6 +75,7 @@ class Game {
     } else {
       this.background.drawRoad();
       this.background.update();
+      
       this.player.drawPlayer();
       this.rpm.updateRpm();
       if (
@@ -82,15 +85,18 @@ class Game {
       ) {
         this.botplayer.drawBot();
         this.rpm.updateBotRpm();
+        //this.botplayer.acceleration();
         if (
           this.rpm.botRevolutions > this.minRpm &&
           this.rpm.botRevolutions < this.maxRpm
         ) {
+          console.log("RPM REVOLUTIONS", this.rpm.botRevolutions);
           this.botplayer.shift();
         }
       } else {
         this.player2.drawPlayer2();
         this.rpm.updateRpm2();
+        //this.player2.acceleration();
       }
     }
   }
@@ -98,10 +104,10 @@ class Game {
   animation() {
     if (this.counter < 300) {
       this.counter++;
-      console.log(this.counter);
+      // console.log(this.counter);
     }
     if (this.counter >= 20 && this.counter < 300) {
-      console.log("COUNTER");
+      // console.log("COUNTER");
       this.background.readySetGo();
     }
     if (this.counter >= 300) {
@@ -113,9 +119,9 @@ class Game {
   updateEverything() {
     if (this.level === "player2") {
       if (
-        this.background.velocityX === 0 ||
-        this.player.progress >= 100 ||
-        this.player2.progress >= 100
+        this.background.velocityX === 0
+        //this.player.progress >= 100 ||
+        //this.player2.progress >= 100
       ) {
         this.gameover();
       }
@@ -126,15 +132,24 @@ class Game {
       this.level === "toretto"
     ) {
       if (
-        this.background.velocityX === 0 ||
-        this.player.progress >= 100 ||
-        this.botplayer.progress >= 100
+        this.background.velocityX === 0
+        //this.player.progress >= 100 ||
+        //this.botplayer.progress >= 100
       ) {
         this.gameover();
       }
     }
     this.drawEverything();
     this.player.acceleration();
+    if (
+      this.level === "grandma" ||
+      this.level === "brian" ||
+      this.level === "toretto"
+    ) {
+      this.botplayer.acceleration();
+    } else {
+      this.player2.acceleration();
+    }
   }
 
   clearEverything() {
@@ -147,15 +162,12 @@ class Game {
         console.log("this.level", this.level);
 
         this.startGame();
-        this.maxRpm = 9000;
-        this.minRpm = 7000;
 
         break;
       case "brian":
         console.log("this.level", this.level);
         this.startGame();
-        this.maxRpm = 8800;
-        this.minRpm = 7500;
+
         break;
       case "toretto":
         console.log("this.level", this.level);
