@@ -8,6 +8,8 @@ class Background {
     this.game = game;
     this.image = new Image(this);
     this.image.src = "/Cityscape-PNG-HD.png";
+    this.meme = new Image(this);
+    this.meme.src = "/fast meme.png";
   }
 
   drawRoad() {
@@ -45,6 +47,7 @@ class Background {
     // this.context.save()
     this.context.fillStyle = "orange";
     this.context.font = "150px palatino";
+    
     this.context.clearRect(0, 0, this.width, this.height);
     if (this.game.counter >= 80) {
       this.context.clearRect(0, 0, this.width, this.height);

@@ -29,6 +29,7 @@ class Player {
 
   shift() {
     if (this.game.rpm.revolutions > 4000 && this.gear < 6)
+    
       if (
         this.progress < 100 &&
         (this.game.rpm.revolutions <= 8500 && this.game.rpm.revolutions >= 7800)

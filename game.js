@@ -22,6 +22,7 @@ class Game {
     this.gamelost = false;
     this.vsmode = false;
     this.winner = [];
+    //this.gearsound = new Audio("/gear up lambo.mp3");
     //this.secondPlayer = false;
   }
 
@@ -114,8 +115,13 @@ class Game {
     if (this.counter >= 20 && this.counter < 300) {
       // console.log("COUNTER");
       this.background.readySetGo();
+      
     }
     if (this.counter >= 300) {
+      if(!(this.background.velocityX === 0)){
+        audio.play();
+        audio2.play();
+      }
       this.updateEverything();
     }
     window.requestAnimationFrame(timestamp => this.animation(timestamp));
