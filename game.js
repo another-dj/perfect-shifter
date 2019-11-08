@@ -59,8 +59,12 @@ class Game {
         case "player2":
           if (this.player.progress>this.player2.progress) {
             this.player.winner();
+            audio.pause();
+        audio2.pause();
           } else if (this.player.progress<this.player2.progress) {
             this.player2.winner();
+            audio.pause();
+        audio2.pause();
           } 
           else if (this.player.progress === this.player2.progress) {
             this.context.clearRect(0, 0, this.width, this.height);
@@ -68,6 +72,8 @@ class Game {
             this.context.fillStyle = "white";
             this.context.fillText("IT'S A DRAW", 135, 180);
             this.started = false;
+            audio.pause();
+        audio2.pause();
           }
           break;
         case "grandma":
@@ -148,6 +154,7 @@ class Game {
         //this.botplayer.progress >= 100
       ) {
         this.gameover();
+        
       }
     }
     this.drawEverything();
@@ -195,5 +202,7 @@ class Game {
   gameover() {
     this.gamelost = true;
     this.started = false;
+    audio.pause();
+    audio2.pause();
   }
 }

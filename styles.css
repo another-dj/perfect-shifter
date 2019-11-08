@@ -1,14 +1,40 @@
-
+body {
+    background-image: url("/real\ need\ speed.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
 
 canvas {
-    display: flex;
-    flex-direction: column;
     border: 2px solid rgb(7, 7, 7);
     background-color: rgb(22, 5, 104);
+    
 }
 
 h1 {
     font-family: fantasy;
     font-size: 15 em;
     text-align: center;
+    color: rgb(255, 249, 249);
+}
+
+#startscreen {
+    display: flex;
+    justify-content: center;
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    float: left;
+}
+
+section {
+   
+    
 }

@@ -8,7 +8,6 @@ You can go to https://perfect-shifter.netlify.com and try the demo version of th
 
 Contributing: 
 You are wellcome to contribute in any positive way for the improvment of the game by 
-slack: @Alexis.Almeida 
-or by email: alexis_forestier@hotmail.com
+slack: @Alexis.Almeida or by email: alexis_forestier@hotmail.com
 
 
