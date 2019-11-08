@@ -44,9 +44,9 @@ class Player2 {
       } else if (this.progress < 100) {
         this.progress += 15;
         this.game.rpm.revolutions2 -= 4000
+        this.x += 10;
         this.velocityX = 2;
         this.gear++;
-        this.x += 1;
 
         console.log("PROGRESS", this.progress);
         console.log("NORMAL SHIFT", this.game.rpm.revolutions2);
@@ -64,28 +64,28 @@ class Player2 {
     //}
   }
   acceleration() {
-   
+   console.log("player2 x", this.x)
     if (this.game.rpm.revolutions2<7800 || this.game.rpm.revolutions2>8500){
-      //perfect shift
-      if (this.x >= 95 && this.x<=97) {
+      //normal shift
+      if (this.x >= 95 && this.x<=96) {
+      this.velocityX = 0;
+      }
+      if (this.x >= 145 && this.x<=146) {
         this.velocityX = 0;
       }
-      if (this.x >= 145 && this.x<=147) {
+      if (this.x >= 195 && this.x<=196) {
         this.velocityX = 0;
       }
-      if (this.x >= 195 && this.x<=197) {
+      if (this.x >= 245 && this.x<=246) {
         this.velocityX = 0;
       }
-      if (this.x >= 245 && this.x<=247) {
-        this.velocityX = 0;
-      }
-      if (this.x >= 295 && this.x<=297) {
+      if (this.x >= 295 && this.x<=296) {
           this.velocityX = 0;
         }
-        if (this.x >= 345 && this.x<=347) {
+        if (this.x >= 345 && this.x<=346) {
           this.velocityX = 0;
         }
-        if (this.x >= 395 && this.x<=397) {
+        if (this.x >= 395 && this.x<=396) {
           this.velocityX = 0;
         }
         this.x += this.velocityX;

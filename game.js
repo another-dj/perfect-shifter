@@ -21,6 +21,7 @@ class Game {
     this.level = "grandma";
     this.gamelost = false;
     this.vsmode = false;
+    this.winner = [];
     //this.secondPlayer = false;
   }
 
@@ -51,15 +52,21 @@ class Game {
 
   drawEverything() {
     //console.log("true or false", this.gamelost);
+    
     if (this.gamelost) {
       switch (this.level) {
         case "player2":
-          if (this.player.progress > this.player2.progress) {
+          if (this.player.progress>this.player2.progress) {
             this.player.winner();
-          } else if (this.player.progress < this.player2.progress) {
+          } else if (this.player.progress<this.player2.progress) {
             this.player2.winner();
-          } else if (this.player.progress === this.player2.progress) {
-            //its a draw();
+          } 
+          else if (this.player.progress === this.player2.progress) {
+            this.context.clearRect(0, 0, this.width, this.height);
+            this.context.font = "80px lucida console";
+            this.context.fillStyle = "white";
+            this.context.fillText("IT'S A DRAW", 135, 180);
+            this.started = false;
           }
           break;
         case "grandma":
